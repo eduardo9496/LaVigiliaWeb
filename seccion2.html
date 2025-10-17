@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleSec2.css">
+    <title>Document</title>
+</head>
+
+<body class="fade-in">
+
+    <button class="menu-toggle">
+        <img src="image/botones_barra_nav/Botón menú M.png" alt="Menú">
+    </button>
+
+
+    <!-- Menú móvil (se reutiliza tu nav existente) -->
+    <nav class="sidebar mobile-nav">
+        <a href="index.html" draggable="false">
+            <div class="logo"><img src="image/pantInicial/logo.png" alt=""></div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="seccion2.html" draggable="false"><img src="image/botones_barra_nav/Noticias_marc.png"
+                        alt="Noticias"></a></li>
+            <li><a href="seccion3.html" draggable="false"><img src="image/botones_barra_nav/Historia.png"
+                        alt="Historia"></a></li>
+            <li><a href="seccion4.html" draggable="false"><img src="image/botones_barra_nav/Galería.png"
+                        alt="Galería"></a></li>
+            <li><a href="seccion5.html" draggable="false"><img src="image/botones_barra_nav/Temporizador.png"
+                        alt="Temporizador"></a></li>
+            <li><a href="seccion6.html" draggable="false"><img src="image/botones_barra_nav/Mapa.png" alt="Mapa"></a>
+            </li>
+            <li><a href="seccion7.html" draggable="false"><img src="image/botones_barra_nav/Tem.png" alt="Contacto"></a>
+            </li>
+        </ul>
+    </nav>
+    
+    <nav class="sidebar">
+        <a href="index.html" draggable="false">
+            <div class="logo"><img src="image/pantInicial/logo.png" alt=""></div>
+        </a>
+        <ul class="nav-links">
+
+            <li><a href="seccion2.html" draggable="false"><img src="image/botones_barra_nav/Noticias_marc.png"
+                        alt="Noticias" data-hover="image/botones_barra_nav/Noticias_marc.png"></a></li>
+            <li><a href="seccion3.html" draggable="false"><img src="image/botones_barra_nav/Historia.png" alt="Galería"
+                        data-hover="image/botones_barra_nav/Historia_Selec.png"></a></li>
+            <li><a href="seccion4.html" draggable="false"><img src="image/botones_barra_nav/Galería.png" alt="Historia"
+                        data-hover="image/botones_barra_nav/Galeria_Selec.png"></a></li>
+            <li><a href="seccion5.html" draggable="false"><img src="image/botones_barra_nav/Temporizador.png" alt="Mapa"
+                        data-hover="image/botones_barra_nav/Temporizador_Selec.png"></a></li>
+            <li><a href="seccion6.html" draggable="false"><img src="image/botones_barra_nav/Mapa.png" alt="Temporizador"
+                        data-hover="image/botones_barra_nav/Mapa_Selec.png"></a></li>
+            <li><a href="seccion7.html" draggable="false"><img src="image/botones_barra_nav/Tem.png" alt="Contacto"
+                        data-hover="image/botones_barra_nav/Tem_Selec.png"></a></li>
+
+        </ul>
+    </nav>
+
+    <main class="content">
+        <div class="seccion1">
+            <img src="image/noticias/Cuadro de texto.png" alt="">
+            <div class="ilustrativa">
+                <img src="image/ilustrativas/este jueves 20 de noviembre.png" alt="">
+            </div>
+            <h1 class="titulo">En noviembre, celebramos el Día de <br>los Guardianes</h1>
+            <p class="parrafo">En conmemoración por los 30 años desde su creación, los Guardianes le han dado esperanza
+                a la humanidad. Sus habilidades permitieron avanzar en la restauración de los ecosistemas exteriores, y
+                nos preparamos para presentar las últimas novedades que trae la última campaña enviada.</p>
+        </div>
+
+        <div class="seccion2">
+            <img src="image/noticias/Cuadro de texto 2.png" alt="">
+            <div class="ilustrativa2">
+                <img src="image/ilustrativas/image 37.png" alt="">
+            </div>
+
+            <p class="parrafo2">Un grupo de Guardianes en las proximaciones de la poterma sur.</p>
+        </div>
+
+        <div class="seccion3">
+            <img src="image/noticias/Cuadro de texto 2.png" alt="">
+            <h1 class="comentarios">Comentarios</h1>
+            <h2 class="usuario">Juan_T</h2>
+            <p class="tiempo">2min</p>
+            <p class="mensaje">Mis hijos ya estan emocionados!! Algún día ellos conoceran el exterior</p>
+            <h2 class="usuario2">ElenaQ048</h2>
+            <p class="tiempo2">17min</p>
+            <p class="mensaje2">¡¡Esas porquerías azules no sirven!!! sólo se comen a los bichos que hay afuera de este
+                vaso.</p>
+                
+        </div>
+        <img class="fotoperfil" src="image/ilustrativas/Foto perfíl.png" alt="">
+        <img class="fotoperfil2" src="image/ilustrativas/Foto perfíl.png" alt="">
+    </main>
+
+    <script>
+        const buttons = document.querySelectorAll('.nav-links img');
+
+        // hover de los botones laterales
+        buttons.forEach(button => {
+            const original = button.src;
+            const hoverSrc = button.dataset.hover;
+
+            button.addEventListener('mouseenter', () => {
+                button.src = hoverSrc;
+            });
+
+            button.addEventListener('mouseleave', () => {
+                button.src = original;
+            });
+        });
+
+        // hamburguesa
+        const menuBtn = document.querySelector('.menu-toggle');
+        const menuImg = menuBtn.querySelector('img'); // la imagen dentro del botón
+        const mobileNav = document.querySelector('.mobile-nav');
+
+        const imgDefault = "image/botones_barra_nav/Botón menú M.png";
+        const imgActive = "image/botones_barra_nav/Botón menú M_seleccionado.png";
+
+        menuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+
+            // cambia la imagen según el estado del menú
+            if (mobileNav.classList.contains('active')) {
+                menuImg.src = imgActive;
+            } else {
+                menuImg.src = imgDefault;
+            }
+        });
+    </script>
+
+</body>
+
+</html>

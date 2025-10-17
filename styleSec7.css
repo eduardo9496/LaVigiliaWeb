@@ -1,0 +1,301 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+@font-face {
+    font-family: 'MiFuente';
+    src: url('fonts/Quattrocento-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MiFuente';
+    src: url('fonts/Quattrocento-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+body {
+    display: flex;
+    font-family: 'MiFuente', sans-serif;
+    height: 96vh;
+    background-image: url("image/fondoTemporizador.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body.fade-in {
+    animation: fadeIn 1.8s forwards;
+}
+
+body.fade-out {
+    animation: fadeOut 1.8s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+
+img {
+    -webkit-user-drag: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: default;
+    outline: none;
+}
+
+.sidebar {
+    position: fixed;
+    top: 120px;
+}
+
+.sidebar .logo {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sidebar .nav-links {
+    list-style: none;
+    width: 100%;
+}
+
+.sidebar .nav-links li {
+    margin: 20px 0;
+    text-align: center;
+}
+
+/* Zig-zag: alterna margen izquierdo */
+.sidebar .nav-links li:nth-child(odd) a img {
+    margin-left: 0px;
+}
+
+.sidebar .nav-links li:nth-child(even) a img {
+    margin-left: 90px;
+    /* desplazamiento hacia la derecha */
+}
+
+/* Botones con transición */
+.sidebar .nav-links a img {
+    width: 70px;
+    height: 70px;
+    transition: transform 0.3s, margin-left 0.3s;
+}
+
+/* Hover: escala y mantiene zig-zag */
+.sidebar .nav-links a img:hover {
+    transform: scale(1.2);
+}
+
+.content {
+    margin-left: 80px;
+    padding: 20px;
+}
+
+.content {
+  margin-left: 80px;
+  padding: 20px;
+}
+
+.logo img {
+  margin: 4px;
+  width: 90px;
+  height: auto;
+}
+
+.temporizador {
+  position: absolute;
+  top: 220px;
+  left: 350px;
+}
+
+.timer {
+  position: absolute;
+  top: 50%;
+  left: 150px;
+  font-size: 100px;
+  width: 100%;
+  font-weight: bold;
+  font-family: monospace;
+  color: #ffffff;
+  text-shadow: 0 0 8px #ffffff;
+}
+
+.texto-temporizador {
+  font-family: 'MiFuente', monospace;
+  position: absolute;
+  width: 100%;
+  top: 120px;
+  left: 500px;
+  transform: translateX(-50%);
+  font-size: 60px;
+
+  color: #ffffff;
+  text-shadow: 0 0 8px #ffffff;
+}
+
+@media (max-width: 500px) {
+
+  .logo img {
+    position: absolute;
+    width: 60px;
+    height: auto;
+    left: 40px;
+    top: 30px;
+  }
+
+  .temporizador {
+    position: absolute;
+    top: 280px;
+    left: 10px;
+  }
+
+  .temporizador img {
+    width: 98%;
+    height: 300px;
+  }
+
+  .timer {
+    position: absolute;
+    top: 60%;
+    left: 35px;
+    font-size: 45px;
+    width: 90%;
+    font-weight: bold;
+    font-family: monospace;
+    color: #ffffff;
+    text-shadow: 0 0 8px #ffffff;
+  }
+
+  .texto-temporizador {
+    font-family: 'MiFuente', monospace;
+    position: absolute;
+    width: 80%;
+    top: 50px;
+    left: 180px;
+    transform: translateX(-50%);
+    font-size: 35px;
+    color: #ffffff;
+    text-shadow: 0 0 8px #ffffff;
+  }
+}
+
+/* Botón hamburguesa (solo móvil) */
+.menu-toggle {
+    display: none;
+    /* oculto en desktop */
+    position: fixed;
+    bottom: 20px;
+    left: 40px;
+    background: transparent;
+    /* sin fondo */
+    border: none;
+    cursor: pointer;
+    z-index: 2000;
+    padding: 0;
+    width: 60px;
+    height: 60px;
+}
+
+/* Imagen dentro del botón */
+.menu-toggle img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+    /* evita que la imagen bloquee el click */
+}
+
+/* Menú móvil (barra oculta al inicio) */
+.mobile-nav {
+    display: none;
+    /* oculto en desktop */
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.825);
+    transform: translateY(100%);
+    transition: transform 0.4s ease-in-out;
+    z-index: 1500;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.mobile-nav.active {
+    transform: translateY(0);
+    /* desliza hacia arriba */
+}
+
+.mobile-nav .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* separación general entre botones */
+    padding-left: 0px;
+
+    /* desplazamiento desde el borde izquierdo */
+    align-items: flex-start;
+    /* alinea todos los botones a la izquierda */
+}
+
+/* Reducir espacio arriba del primer botón y abajo del último */
+.mobile-nav .nav-links li:first-child {
+    margin-top: 5px;
+    /* reduce espacio superior */
+}
+
+.mobile-nav .nav-links li:last-child {
+    margin-bottom: 5px;
+    /* reduce espacio inferior */
+}
+
+/* Ajuste general para los botones */
+.mobile-nav .nav-links a img {
+    width: 50px;
+    height: 50px;
+    margin: 20px -100px -150px;
+}
+
+/* 🔥 Solo mostrar en pantallas chicas */
+@media (max-width: 500px) {
+    .sidebar {
+        display: none;
+    }
+
+    /* oculta sidebar fija */
+    .menu-toggle {
+        display: block;
+    }
+
+    .mobile-nav {
+        display: block;
+    }
+}

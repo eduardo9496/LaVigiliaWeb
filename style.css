@@ -1,0 +1,157 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* ✅ mejor que height fijo */
+  width: 100%;
+  background-image: url("image/pantInicial/fondo.png");
+  background-size: cover;   /* ✅ se adapta sin deformar */
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  position: relative;
+}
+
+
+body.fade-in {
+  animation: fadeIn 2.2s  forwards;
+}
+
+body.fade-out {
+  animation: fadeOut 2.2s  forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+img { 
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: default;
+  outline: none;
+}
+
+#worm {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  /* no bloquea clics */
+  z-index: 9999;
+}
+
+.button-circle {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #ffffff;
+  position: absolute;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+}
+
+/* Onda animada */
+.button-circle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgb(255, 255, 255);
+  /* borde de la onda */
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(50%, 50%);
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(2.5);
+    opacity: 0;
+  }
+}
+
+.button-circle:hover {
+  background: #00A6F0;
+  box-shadow: 0 0 20px rgba(0, 166, 240, 0.7);
+}
+
+.button-circle:hover::after {
+  border-color: rgba(0, 166, 240, 1);
+  background: rgba(0, 166, 240, 0.5);
+}
+
+
+/* posiciones relativas con % */
+.btn1 { left: 40%; top: 10%; }
+.btn3 { left: 60%; top: 10%; }
+.btn4 { left: 30%; top: 40%; }
+.btn5 { left: 68%; top: 40%; }
+.btn6 { left: 57%; top: 75%; }
+.btn7 { left: 42%; top: 75%; }
+
+.logoCen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+@media (max-width: 500px) {
+
+  /* Botones un poco más grandes en celulares */
+  .button-circle {
+    width: 4vw;
+    height: 4vw;
+  }
+
+  .button-circle::after {
+    width: 5vw;
+    height: 5vw;
+  }
+
+  /* Reposicionar botones si hace falta */
+  .btn1 { left: 30%; top: 20%; }
+  .btn3 { left: 70%; top: 20%; }
+  .btn4 { left: 15%; top: 45%; }
+  .btn5 { left: 85%; top: 45%; }
+  .btn6 { left: 68%; top: 70%; }
+  .btn7 { left: 30%; top: 70%; }
+
+  /* Logo más chico en pantallas chicas */
+  .logoCen img {
+    max-width: 20vw;
+  }
+}
+
+  

@@ -1,0 +1,568 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+@font-face {
+    font-family: 'MiFuente';
+    src: url('fonts/Quattrocento-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MiFuente';
+    src: url('fonts/Quattrocento-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+body {
+    display: flex;
+    height: 96vh;
+
+    background-image: url("image/fondoPantallas.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* mantiene el fondo fijo al hacer scroll */
+    background-repeat: no-repeat;
+}
+
+body.fade-in {
+    animation: fadeIn 1.8s forwards;
+}
+
+body.fade-out {
+    animation: fadeOut 1.8s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+/* Scrollbar para Chrome, Edge, Brave, Safari */
+::-webkit-scrollbar {
+    width: 12px;
+    /* grosor de la barra */
+}
+
+/* Track con fondo negro */
+::-webkit-scrollbar-track {
+    background: rgb(0, 0, 0);
+    /* negro semi-transparente */
+    border-radius: 8px;
+}
+
+/* Thumb visible */
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #0ff, #00f);
+    /* degradado futurista */
+    border-radius: 10px;
+    box-shadow: 0 0 10px #0ff, 0 0 20px #00f;
+}
+
+/* Hover sobre la barra */
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #0ff, #0f0);
+    box-shadow: 0 0 15px #0ff, 0 0 25px #0f0;
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #0ff rgba(0, 0, 0);
+    /* thumb visible, track negro */
+}
+
+
+
+
+img {
+    -webkit-user-drag: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: default;
+    outline: none;
+}
+
+.sidebar {
+    position: fixed;
+    top: 120px;
+}
+
+.sidebar .logo {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sidebar .nav-links {
+    list-style: none;
+    width: 100%;
+}
+
+.sidebar .nav-links li {
+    margin: 20px 0;
+    text-align: center;
+}
+
+/* Zig-zag: alterna margen izquierdo */
+.sidebar .nav-links li:nth-child(odd) a img {
+    margin-left: 0px;
+}
+
+.sidebar .nav-links li:nth-child(even) a img {
+    margin-left: 90px;
+    /* desplazamiento hacia la derecha */
+}
+
+/* Botones con transición */
+.sidebar .nav-links a img {
+    width: 70px;
+    height: 70px;
+    transition: transform 0.3s, margin-left 0.3s;
+}
+
+/* Hover: escala y mantiene zig-zag */
+.sidebar .nav-links a img:hover {
+    transform: scale(1.2);
+}
+
+.content {
+    margin-left: 80px;
+    padding: 20px;
+}
+
+.logo img {
+    margin: 4px;
+    width: 90px;
+    height: auto;
+}
+
+.anuncio1 img {
+    position: absolute;
+    left: 220px;
+    width: 800px;
+    height: 550px;
+}
+
+.anuncio2 img {
+    position: absolute;
+    width: 800px;
+    height: 550px;
+    left: 1055px;
+}
+
+.anuncio3 img {
+    position: absolute;
+    width: 800px;
+    height: 550px;
+    left: 220px;
+    top: 600px;
+}
+
+.anuncio4 img {
+    position: absolute;
+    width: 800px;
+    height: 550px;
+    left: 1055px;
+    top: 600px;
+}
+
+.texto_card1 img {
+    position: absolute;
+    width: 750px;
+    height: 400px;
+    left: 245px;
+    top: 40px;
+
+}
+
+.texto_card2 img {
+    position: absolute;
+    width: 750px;
+    height: 400px;
+    left: 1080px;
+    top: 40px;
+}
+
+
+.texto_card3 img {
+    position: absolute;
+    width: 750px;
+    height: 400px;
+    left: 245px;
+    top: 620px;
+}
+
+.titulo_card1 h1 {
+    position: absolute;
+    left: 260px;
+    top: 390px;
+    font-family: 'MiFuente', monospace;
+    font-size: 32px;
+    color: white;
+    z-index: 3;
+}
+
+.texto_card1 p {
+    position: absolute;
+    left: 260px;
+    top: 460px;
+    width: 600px;
+    font-family: 'MiFuente', monospace;
+    font-size: 18px;
+    color: white;
+    text-align: justify;
+    line-height: 1.4;
+}
+
+.titulo_card2 h1 {
+    position: absolute;
+    left: 1100px;
+    top: 390px;
+    font-family: 'MiFuente', monospace;
+    font-size: 32px;
+    color: white;
+    z-index: 2;
+}
+
+.texto_card2 p {
+    position: absolute;
+    left: 1100px;
+    top: 460px;
+    width: 600px;
+    font-family: 'MiFuente', monospace;
+    font-size: 18px;
+    color: white;
+    text-align: justify;
+    line-height: 1.4;
+}
+
+.titulo_card3 h1 {
+    position: absolute;
+    left: 260px;
+    top: 965px;
+    font-family: 'MiFuente', monospace;
+    font-size: 32px;
+    color: white;
+    z-index: 4;
+}
+
+.texto_card3 p {
+    position: absolute;
+    left: 260px;
+    top: 1030px;
+    width: 660px;
+    font-family: 'MiFuente', monospace;
+    font-size: 18px;
+    color: white;
+    text-align: justify;
+    line-height: 1.4;
+}
+
+.titulo_card4 h1 {
+    position: absolute;
+    left: 1350px;
+    top: 750px;
+    font-family: 'MiFuente', monospace;
+    font-size: 32px;
+    color: white;
+}
+
+.texto_card4 p {
+    position: absolute;
+    left: 1320px;
+    top: 800px;
+    font-family: 'MiFuente', monospace;
+    font-size: 18px;
+    color: white;
+    text-align: justify;
+    line-height: 1.4;
+}
+
+.boton_minijuego img {
+    position: absolute;
+    left: 1420px;
+    top: 880px;
+    width: 100px;
+    height: 100px;
+}
+
+@media (max-width: 500px) {
+
+    .logo img {
+        position: absolute;
+        width: 60px;
+        height: auto;
+        left: 40px;
+        top: 30px;
+    }
+
+    .anuncio1 img {
+        position: absolute;
+        left: 10px;
+        width: 95%;
+        height: 510px;
+    }
+
+    .anuncio2 img {
+        position: absolute;
+        width: 95%;
+        height: 520px;
+        left: 10px;
+        top: 550px;
+    }
+
+    .anuncio3 img {
+        position: absolute;
+        width: 95%;
+        height: 540px;
+        left: 10px;
+        top: 1090px;
+    }
+
+    .anuncio4 img {
+        position: absolute;
+        width: 95%;
+        height: 500px;
+        left: 10px;
+        top: 1650px;
+    }
+
+    .texto_card1 img {
+        position: absolute;
+        width: 322px;
+        height: 300px;
+        left: 20px;
+        padding-top: 25px ;
+
+    }
+
+    .texto_card2 img {
+        position: absolute;
+        width: 322px;
+        height: 350px;
+        left: 20px;
+        padding-top: 40px ;
+    }
+
+
+    .texto_card3 img {
+        position: absolute;
+       width: 322px;
+        height: 360px;
+        left: 20px;
+        padding-top: 40px;
+    }
+
+    .titulo_card1 h1 {
+        position: absolute;
+        left: 30px;
+        top: 295px;
+        font-family: 'MiFuente', monospace;
+        font-size: 24px;
+        color: white;
+        
+    }
+
+    .texto_card1 p {
+        position: absolute;
+        left: 30px;
+        top: 360px;
+        width: 300px;
+        font-family: 'MiFuente', monospace;
+        font-size: 16px;
+        color: white;
+        text-align: justify;
+        line-height: 1.4;
+    }
+
+    .titulo_card2 h1 {
+        position: absolute;
+        left: 30px;
+        top: 850px;
+        font-family: 'MiFuente', monospace;
+        font-size: 22px;
+        color: white;
+    }
+
+    .texto_card2 p {
+        position: absolute;
+        left: 30px;
+        top: 920px;
+        width: 305px;
+        font-family: 'MiFuente', monospace;
+        font-size: 16px;
+        color: white;
+        text-align: justify;
+        line-height: 1.4;
+    }
+
+    .titulo_card3 h1 {
+        position: absolute;
+        left: 30px;
+        top: 1410px;
+        font-family: 'MiFuente', monospace;
+        font-size: 24px;
+        color: white;
+    }
+
+    .texto_card3 p {
+        position: absolute;
+        left: 30px;
+        top: 1460px;
+        width: 300px;
+        font-family: 'MiFuente', monospace;
+        font-size: 16px;
+        color: white;
+        text-align: justify;
+        line-height: 1.4;
+    }
+
+    .titulo_card4 h1 {
+        position: absolute;
+        left: 80px;
+        top: 1800px;
+        font-family: 'MiFuente', monospace;
+        font-size: 32px;
+        color: white;
+    }
+
+    .texto_card4 p {
+        position: absolute;
+        left: 50px;
+        top: 1880px;
+        font-family: 'MiFuente', monospace;
+        font-size: 18px;
+        color: white;
+        text-align: justify;
+        line-height: 1.4;
+    }
+
+    .boton_minijuego img {
+        position: absolute;
+        left: 140px;
+        top: 1950px;
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* Botón hamburguesa (solo móvil) */
+.menu-toggle {
+    display: none;
+    /* oculto en desktop */
+    position: fixed;
+    bottom: 20px;
+    left: 40px;
+    background: transparent;
+    /* sin fondo */
+    border: none;
+    cursor: pointer;
+    z-index: 2000;
+    padding: 0;
+    width: 60px;
+    height: 60px;
+}
+
+/* Imagen dentro del botón */
+.menu-toggle img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+    /* evita que la imagen bloquee el click */
+}
+
+/* Menú móvil (barra oculta al inicio) */
+.mobile-nav {
+    display: none;
+    /* oculto en desktop */
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.825);
+    transform: translateY(100%);
+    transition: transform 0.4s ease-in-out;
+    z-index: 1500;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.mobile-nav.active {
+    transform: translateY(0);
+    /* desliza hacia arriba */
+}
+
+.mobile-nav .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* separación general entre botones */
+    padding-left: 0px;
+
+    /* desplazamiento desde el borde izquierdo */
+    align-items: flex-start;
+    /* alinea todos los botones a la izquierda */
+}
+
+/* Reducir espacio arriba del primer botón y abajo del último */
+.mobile-nav .nav-links li:first-child {
+    margin-top: 5px;
+    /* reduce espacio superior */
+}
+
+.mobile-nav .nav-links li:last-child {
+    margin-bottom: 5px;
+    /* reduce espacio inferior */
+}
+
+/* Ajuste general para los botones */
+.mobile-nav .nav-links a img {
+    width: 50px;
+    height: 50px;
+    margin: 20px -100px -150px;
+}
+
+
+
+/* 🔥 Solo mostrar en pantallas chicas */
+@media (max-width: 500px) {
+    .sidebar {
+        display: none;
+    }
+
+    /* oculta sidebar fija */
+    .menu-toggle {
+        display: block;
+    }
+
+    .mobile-nav {
+        display: block;
+    }
+}
